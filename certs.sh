@@ -45,7 +45,10 @@ else
 fi
 
 if docker ps --format '{{.Names}}' | grep -qx app_proxy; then
-  docker compose restart nginx-proxy
+  # Plain `docker restart`: compose's animated progress display redraws the
+  # terminal and buries the output around it.
+  echo "Restarting app_proxy to load the new cert..."
+  docker restart app_proxy >/dev/null
 fi
 
 if [[ ${#missing_hosts[@]} -gt 0 ]]; then
