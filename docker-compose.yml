@@ -8,6 +8,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    environment:
+      # JSON dump of what docker-gen sees for every container
+      # (/debug) — invaluable when a vhost mysteriously doesn't exist.
+      DEBUG_ENDPOINT: "true"
     volumes:
       - ./ssl:/etc/nginx/certs
       - ./conf/locals.conf:/etc/nginx/conf.d/locals.conf

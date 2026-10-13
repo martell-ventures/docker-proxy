@@ -1,1 +1,3 @@
-# This is here to make sure the directory is created.
+# Certs and private keys are machine-local; regenerate with ../certs.sh
+*
+!.gitignore
